@@ -1,0 +1,79 @@
+/* September refinements. Loaded after desktop and phone styles. */
+@font-face{font-family:"Avenir Light";src:url('../fonts/avenir-light.woff2') format('woff2');font-style:normal;font-weight:300;font-display:swap}
+.site-header .brand{text-transform:none}
+.socials{color:#000}
+.socials svg{width:24px;height:24px;fill:currentColor}
+.hero-foot .socials{gap:14px}
+body:not(.page-project) .hero-foot{left:max(24px,calc(50% - 605px));right:max(12px,calc(50% - 663px));bottom:7.4svh}
+.hero-foot .btn-outline{font-family:"Almarena Mobile",var(--sans);font-size:16px;font-weight:300;width:155px;min-width:155px;height:29px;min-height:29px;padding:2px 12px}
+.marquee-group{gap:12px;padding-right:12px}
+.project-image-viewport{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;overflow:hidden;pointer-events:none}
+.project-image-viewport img{flex:none;transition:none;will-change:transform}
+.project-image-viewport .project-slide-outgoing{position:absolute;inset:0;margin:auto;pointer-events:none}
+.page-project .hero{height:auto;min-height:100svh;padding-bottom:20px}
+.project-share{width:304px;max-width:calc(100% - 40px);display:flex;justify-content:center;align-items:center;gap:11px;margin:16px auto 10px;color:#000;position:relative}
+.project-share>a,.project-share>button{display:flex;align-items:center;justify-content:center;flex:0 0 32px;width:32px;height:36px;cursor:pointer}
+.project-share svg{width:18px;height:18px;fill:currentColor}
+.page-project .project-nav{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;max-width:980px;width:calc(100% - 2 * var(--pad));margin:0 auto;padding:54px 0;border:0;gap:24px}
+.project-nav #nav-prev,.project-nav #nav-next{font-family:"Avenir Light",Arial,sans-serif;font-size:24px;line-height:1.4;font-weight:300;letter-spacing:0;display:flex;align-items:center;min-height:40px;max-width:none}
+.project-nav #nav-next{justify-content:flex-end}
+.project-nav a:nth-child(2){font-family:"Almarena Mobile",var(--sans);font-size:16px;font-weight:300;width:179px;min-width:179px;min-height:34px;height:34px;max-width:none;padding:3px 10px;border-radius:13px;order:0}
+.page-project .site-footer{max-width:980px;width:calc(100% - 2 * var(--pad));margin:auto;padding-top:48px}
+@view-transition{navigation:auto}
+::view-transition-old(root){animation:page-fade-out .55s ease both}
+::view-transition-new(root){animation:page-fade-in .7s ease both}
+html[data-page-transition=rise]::view-transition-old(root){animation:page-down .85s cubic-bezier(.645,.045,.355,1) both}
+html[data-page-transition=rise]::view-transition-new(root){animation:page-up .85s cubic-bezier(.645,.045,.355,1) both}
+::view-transition-old(root),::view-transition-new(root){mix-blend-mode:normal}
+html[data-page-leaving=true] body{pointer-events:none;animation:page-fade-out .4s ease both}
+html[data-page-leaving=true][data-page-transition=rise] body{animation:page-down .65s cubic-bezier(.645,.045,.355,1) both}
+html[data-page-entering=true] body{animation:page-fade-in .8s ease both}
+html[data-page-entering=true][data-page-transition=rise] body{animation:page-up .8s cubic-bezier(.645,.045,.355,1) both}
+@keyframes page-fade-out{to{opacity:0}}
+@keyframes page-fade-in{from{opacity:0}to{opacity:1}}
+@keyframes page-down{from{transform:translateY(0);opacity:1}to{transform:translateY(100vh);opacity:0}}
+@keyframes page-up{from{transform:translateY(100vh);opacity:0}to{transform:translateY(0);opacity:1}}
+@media(max-width:767px){
+ .site-header .brand{width:auto;max-width:calc(100% - 3.5rem)}
+ .hero-foot .socials{gap:.375rem}
+ .hero-foot .socials svg{width:1.125rem;height:1.125rem}
+ .hero-foot .btn-outline{font-size:.775rem;width:6.625rem;min-width:6.625rem;height:auto;min-height:1.625rem;padding:.25rem .625rem}
+ .marquee-group{gap:.5rem;padding-right:.5rem}
+ .page-project .hero{min-height:0;padding-bottom:1.875rem}
+ .project-share{margin:.25rem auto .625rem;gap:.5rem;width:17rem}
+ .project-share>a,.project-share>button{flex-basis:2.25rem;width:2.25rem;height:2.75rem;min-height:44px}
+ .project-share svg{width:1rem;height:1rem}
+ .page-project .project-nav{width:calc(100% - 2.5rem);padding:2rem 0;gap:.5rem;grid-template-columns:1fr auto 1fr}
+ .project-nav #nav-prev,.project-nav #nav-next{font-size:1rem;min-height:2.75rem}
+ .project-nav a:nth-child(2){font-size:.75rem;width:auto;min-width:0;min-height:2.125rem;height:auto;padding:.25rem .5rem;white-space:nowrap}
+ .page-project .site-footer{width:calc(100% - 2.5rem);padding-top:1.25rem}
+}
+@media(prefers-reduced-motion:reduce){
+ ::view-transition-old(root),::view-transition-new(root){animation:none!important}
+ html[data-page-entering=true] body,html[data-page-leaving=true] body{animation:none!important;transform:none;opacity:1}
+}
+
+/* Keep the counter and action in separate layout rows at every viewport size. */
+@media(min-width:768px){
+ .page-home .hero{height:auto;min-height:100svh;padding-bottom:32px}
+ .page-home .stage-caption{flex-shrink:0;min-height:32px}
+ .page-home .hero-foot{position:relative;inset:auto;width:calc(100% - 2 * var(--pad));margin:20px auto 0;min-height:36px;flex-shrink:0}
+}
+@media(max-width:767px){
+ .page-home .stage-caption{flex-shrink:0}
+ .page-home .hero-foot .btn-outline{flex-shrink:0;margin-top:.5rem}
+}
+.page-project.scroll-header .site-header{position:fixed;background:rgba(255,255,255,.98);transform:translateY(0);transition:transform .38s cubic-bezier(.22,.61,.36,1);will-change:transform}
+.page-project.scroll-header .site-header.header-hidden{transform:translateY(-110%);pointer-events:none}
+.page-project.scroll-header.menu-open .site-header{transform:translateY(0);pointer-events:auto}
+@media(prefers-reduced-motion:reduce){.page-project.scroll-header .site-header{transition:none}}
+
+/* Override the old absolute offsets as well as their selector specificity. */
+@media(min-width:768px){
+ body.page-home .hero{padding-top:clamp(80px,10svh,120px);padding-bottom:24px}
+ body.page-home .hero .stage{height:clamp(280px,calc(100svh - 250px),74svh)}
+ body.page-home .hero .hero-foot{position:relative;left:auto;right:auto;top:auto;bottom:auto;display:flex;visibility:visible;opacity:1;width:calc(100% - 2 * var(--pad));margin:18px auto 0;align-items:center;justify-content:space-between}
+}
+body.page-home .hero .hero-foot .btn-outline{display:inline-flex;visibility:visible;opacity:1;position:relative;z-index:2;flex-shrink:0;white-space:nowrap}
+.page-project .stage-arrow svg{width:23px;height:23px;stroke-width:.8;stroke-linecap:round;stroke-linejoin:round}
+@media(max-width:767px){.page-project .stage-arrow svg{width:18px;height:23px;stroke-width:.8}}
